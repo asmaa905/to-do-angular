@@ -1,0 +1,24 @@
+<div class="container">
+  <h2 class="text-center my-3">To-Do List</h2>
+
+  <div class="input-group mb-3">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Add a new task..."
+      [(ngModel)]="newTodoText"
+    />
+    <button class="btn btn-primary" (click)="addToDo()">Add</button>
+  </div>
+  @for(todo of todos; track todo.id){
+  <div class="col">
+    <app-to-do-card
+      [todo]="todo"
+      (delete)="deleteToDo(todo.id)"
+      (edit)="editToDo(todo)"
+    ></app-to-do-card>
+  </div>
+  } @empty {
+  <p>List is empty</p>
+  }
+</div>
